@@ -1,0 +1,16 @@
+@import "colors.rasi"
+
+* {
+	background-color:	@bg;
+	text-color:		@fg;
+	font:			"Hack Nerd Font 12";
+}
+
+window {
+	width:			280px;
+	padding:		25px;
+	border:			3px;
+	border-radius:		0px;
+	border-color:		@red;
+	location:		center;
+}

@@ -1,0 +1,55 @@
+@import "colors.rasi"
+
+configuration {
+    	show-icons:		false;
+	font:                   "Hack Nerd Font 12";
+    	disable-history:	false;
+	sidebar-mode:		false;
+}
+
+* {
+    	background-color:	@bg;
+    	text-color:		@fg;
+}
+
+window {
+    	transparency:		"real";
+	border:			5px;
+	border-color:		@red;
+    	border-radius:		0px;
+    	location:		center;
+    	width:			400px;
+    	x-offset:		0px;
+    	y-offset:		0px;
+}
+
+listview {
+    	columns:		5;
+    	lines:			1;
+    	spacing:		5px;
+    	cycle:			true;
+    	dynamic:		true;
+    	layout:			vertical;
+}
+
+mainbox {
+    	background-color:	@bg;
+    	children:		[ listview ];
+}
+
+element-text {
+    	background-color:	inherit;
+    	text-color:		inherit;
+	font:			"Hack Nerd Font 30";
+    	horizontal-align:	0.5;
+    	vertical-align:		0.5;
+    	margin:			10px 0px 10px 0px;
+}
+
+element selected {
+    background-color:		@yellow;
+    text-color:			@bg;
+    border:			0px;
+    border-radius:		0px;
+    border-color:		@bg;
+}

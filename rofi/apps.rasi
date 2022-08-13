@@ -1,0 +1,143 @@
+@import "colors.rasi"
+
+configuration {
+    font: 			"Hack Nerd Font 12";
+    fixed-num-lines: 		true;
+    show-icons: 		false;
+    sidebar-mode: 		true;
+    scroll-method: 		0;
+    click-to-exit: 		true;
+    combi-hide-mode-prefix:	false;
+    display-drun: 		"";
+}
+
+* {
+    background-color:         	@bg;
+}
+
+window {
+    border-color: 		@ac;
+    border-radius: 		6px;
+    padding: 			30;
+    width: 			20%;
+}
+
+prompt {
+    text-color: 		@fg;
+}
+
+textbox-prompt-colon {
+    expand: 			false;
+    str: 			" ";
+    margin:			0px 4px 0px 0px;
+    text-color: 		inherit;
+}
+
+entry {
+    text-color: 		@fg;
+}
+
+case-indicator {
+    text-color: 		@fg;
+}
+
+inputbar {
+    text-color: 		@fg;
+    padding:    		1px;
+    children: 			[ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+mainbox {
+    border-color: 		@ac;
+    padding: 			6;
+}
+
+listview {
+    lines:			10;
+    columns:			1;
+    fixed-height: 		0;
+    border: 			0px;
+    border-color: 		@ac;
+    spacing: 			4px;
+    scrollbar: 			false;
+    padding: 			5px 5px 0px 5px;
+}
+
+element-text {
+    background-color: 		#00000000;
+    text-color:       		inherit;
+}
+
+element {
+    border: 			0px;
+    border-radius: 		4px;
+    padding: 			5px;
+}
+element normal.normal {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+element normal.active {
+    background-color: 		@yellow;
+    text-color:       		@bg;
+}
+element selected.normal {
+    background-color: 		@orange;
+    text-color:       		@bg;
+}
+element selected.active {
+    background-color: 		@yellow;
+    text-color:       		@bg;
+}
+element alternate.normal {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+element alternate.active {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+
+sidebar {
+    border:       		0px;
+    border-color: 		@ac;
+    border-radius: 		0px;
+}
+
+button {
+    horizontal-align:          	0.5;
+    vertical-align:            	0.5;
+    background-color:          	@fg;
+    margin: 			5px;
+    padding: 			5px;
+    text-color: 		@bg;
+    border: 			0px;
+    border-radius: 		4px;
+    border-color: 		@fg;
+}
+
+button selected {
+    background-color:          	@ac;
+    text-color: 		@fg;
+    border: 			0px;
+    border-radius: 		4px;
+    border-color: 		@fg;
+}
+
+scrollbar {
+    width:        		4px;
+    border:       		0px;
+    handle-color: 		@fg;
+    handle-width: 		8px;
+    padding:      		0;
+}
+
+message {
+    border: 			0px;
+    border-color: 		@ac;
+    padding: 			1px;
+}
+
+textbox {
+    text-color: 		@fg;
+}

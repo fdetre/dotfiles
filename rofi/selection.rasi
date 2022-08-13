@@ -1,0 +1,102 @@
+@import "colors.rasi"
+
+configuration {
+    font: 			"Hack Nerd Font 12";
+    fixed-num-lines: 		true;
+    show-icons: 		false;
+    sidebar-mode: 		false;
+    scroll-method: 		0;
+    click-to-exit: 		true;
+    combi-hide-mode-prefix:	false;
+}
+
+* {
+    background-color:         	@bg;
+}
+
+window {
+    border-color: 		@ac;
+    border-radius: 		6px;
+    padding: 			30;
+    width: 			600px;
+}
+
+prompt {
+    text-color: 		@fg;
+}
+
+
+entry {
+    text-color: 		@fg;
+}
+
+case-indicator {
+    text-color: 		@fg;
+}
+
+
+mainbox {
+    border-color: 		@ac;
+    padding: 			6;
+    children:			[ prompt, listview ];
+}
+
+listview {
+    lines:			10;
+    columns:			1;
+    fixed-height: 		0;
+    border: 			0px;
+    border-color: 		@ac;
+    spacing: 			4px;
+    scrollbar: 			false;
+    padding: 			5px 5px 0px 5px;
+}
+
+element-text {
+    background-color: 		#00000000;
+    text-color:       		inherit;
+}
+
+element {
+    border: 			0px;
+    border-radius: 		4px;
+    padding: 			5px;
+}
+element normal.normal {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+element normal.active {
+    background-color: 		@yellow;
+    text-color:       		@bg;
+}
+element selected.normal {
+    background-color: 		@orange;
+    text-color:       		@bg;
+}
+element selected.active {
+    background-color: 		@yellow;
+    text-color:       		@bg;
+}
+element alternate.normal {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+element alternate.active {
+    background-color: 		@bg;
+    text-color:       		@fg;
+}
+
+sidebar {
+    border:       		0px;
+    border-color: 		@ac;
+    border-radius: 		0px;
+}
+
+scrollbar {
+    width:        		4px;
+    border:       		0px;
+    handle-color: 		@fg;
+    handle-width: 		8px;
+    padding:      		0;
+}
