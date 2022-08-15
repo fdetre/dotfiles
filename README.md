@@ -1,4 +1,4 @@
-# Arch Linux installation with encryption
+# Arch Linux installation with encryption + Wayland configuration
 
 We're going to install an Arch Linux system with a full disk encryption except for the
 boot partition.
@@ -233,4 +233,212 @@ Exit the chroot, unmount all partitions and reboot:
 exit
 umount -R /mnt
 reboot
+```
+
+## Post-installation
+
+### Utility packages
+
+```bash
+pacman -S zip unzip p7zip ntp cronie exfat-utils zsh git wget curl intel-ucode man
+```
+
+Enable services:
+
+```bash
+systemctl enable cronie
+systemctl enable ntpd
+```
+
+### Create a new user
+
+Use the following command (can use bash instead of zsh):
+
+```bash
+useradd -m -g wheel -c 'User Name' -s /bin/zsh username
+```
+
+Create a password for the new user:
+
+```bash
+passwd username
+```
+
+Edit /etc/sudoers and uncomment the line to allow members of group wheel to execute any command as follow:
+
+```bash
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
+```
+
+**From now everything is executed as the new user created above**
+
+### Oh My Zsh
+
+Oh My Zsh is a framework for managing zsh configuration.
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### SSH
+
+Package:
+
+```bash
+sudo pacman -S openssh
+```
+
+Enable and start the service (start if you need before next boot):
+
+```bash
+sudo systemctl enable sshd
+sudo systemctl start sshd
+```
+
+### Graphics
+
+```bash
+sudo pacman -S mesa vulkan-intel
+```
+
+### Audio
+
+PipeWire is a low-level multimedia framework.
+
+```bash
+sudo pacman -S pipewire wireplumber pavucontrol
+```
+
+It will need a reboot to work correctly
+
+### User directories
+
+The following is to create the "classic" user directories (Documents, Pictures, Videos, Music...):
+
+```bash
+sudo pacman -S xdg-user-dirs
+xdg-user-dirs-update
+```
+
+### Yay
+
+Yay is an AUR helper that lets you download and install packages from the Arch User Repository.
+
+```bash
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+### Fonts
+
+Use NerdFonts for a large set of icons and fonts needed for foot terminal, sway and waybar.
+
+```bash
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh
+```
+
+### Terminal
+
+Foot is a fast, lightweight, and minimalistic Wayland terminal emulator.
+
+```bash
+sudo pacman -S foot
+```
+
+### Sway
+
+Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window manager for X11.
+
+```bash
+sudo pacman -S sway swaylock swayidle swaybg
+```
+
+It will also need a package to access to hardware devices such as keyboard, mouse, and graphics card.
+
+```bash
+sudo pacman -S polkit
+```
+
+### Rofi
+
+Rofi is a window switcher, run dialog, ssh-launcher and dmenu replacement. Install the wayland fork only available in the AUR:
+
+```bash
+yay -S rofi-lbonn-wayland 
+```
+
+### Waybar
+
+Waybar is a customizable Wayland bar for Sway and Wlroots based compositors
+
+```bash
+sudo pacman -S waybar
+```
+
+### ACPI
+
+It will be used in the custom waybar script called pipewire to check if the jack is plugged or not.
+
+```bash
+sudo pacman -S acpid
+sudo systemctl enable acpid
+sudo systemctl start acpid
+```
+
+### Screen capture
+
+Grim is a screenshot utility for Wayland. Slurp is used for selecting aerea and for multiple displays.
+
+```bash
+sudo pacman -S grimshot grim slurp
+```
+
+### Screen sharing
+
+To be able to have screen sharing on google meet:
+
+```bash
+yay -S xdg-desktop-portal xdg-desktop-portal-wlr
+```
+
+**Dont't forget to put this line in your sway config file otherwise all the graphic part of the system will be very slow:**
+
+```bash
+echo "exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway" >> ~/.config/sway/config
+```
+
+Configuration:
+
+```bash
+mkdir ~/.config/xdg-desktop-portal-wlr
+echo "chooser_type = simple\nchooser_cmd = slurp -f %o -ro" > ~/.config/xdg-desktop-portal-wlr/config
+```
+
+### Configuring displays
+
+wdisplays is a graphical application for configuring displays in Wayland compositors.
+
+```bash
+yay -S wdisplays
+```
+
+### WireGuard
+
+WireGuard is a fast, modern and secure VPN tunnel.
+
+```bash
+sudo pacman -S wireguard-tools systemd-resolvconf
+sudo systemctl enable systemd-resolved.service
+```
+
+### DVD Rip
+
+Use the handbrake software.
+
+```bash
+sudo pacman -S libdvdread libdvdcss libdvdnav handbrake
 ```
