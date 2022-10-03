@@ -17,7 +17,7 @@ confirm_exit() {
 	rofi -dmenu\
 		-i\
 		-no-fixed-num-lines\
-		-p "Are You Sure? [y] : "\
+		-p "Are You Sure? [y/n] "\
 		-theme $dir/confirm.rasi
 }
 
@@ -28,7 +28,7 @@ chosen="$(echo -e "$options" | $rofi_command -p "" -dmenu -selected-row 0)"
 case $chosen in
 	$shutdown)
 		ans=$(confirm_exit &)
-		if [ "$ans" == "y" ] || [ ${#ans} -eq 0 ]; then
+		if [ "$ans" == "y" ]; then
 			echo "unplug" > $HOME/.config/waybar/scripts/jack_monitoring
 			systemctl poweroff
 		else
@@ -37,7 +37,7 @@ case $chosen in
 		;;
 	$reboot)
 		ans=$(confirm_exit &)
-		if [ "$ans" == "y" ] || [ ${#ans} -eq 0 ]; then
+		if [ "$ans" == "y" ]; then
 			echo "unplug" > $HOME/.config/waybar/scripts/jack_monitoring
 			systemctl reboot
 		else
@@ -57,7 +57,7 @@ case $chosen in
 		;;
 	$logout)
 		ans=$(confirm_exit &)
-		if [ "$ans" == "y" ] || [ ${#ans} -eq 0 ]; then
+		if [ "$ans" == "y" ]; then
 			swaymsg exit
 		else
 			exit 0

@@ -281,6 +281,13 @@ Oh My Zsh is a framework for managing zsh configuration.
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+### Prompt
+
+```bash
+sudo pacman -S starship
+echo "eval \"\$(starship init zsh)\"" >> $HOME/.zshrc
+```
+
 ### SSH
 
 Package:
@@ -307,7 +314,7 @@ sudo pacman -S mesa vulkan-intel
 PipeWire is a low-level multimedia framework.
 
 ```bash
-sudo pacman -S pipewire wireplumber pavucontrol
+sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol
 ```
 
 It will need a reboot to work correctly
@@ -360,7 +367,8 @@ sudo pacman -S sway swaylock swayidle swaybg
 It will also need a package to access to hardware devices such as keyboard, mouse, and graphics card.
 
 ```bash
-sudo pacman -S polkit
+sudo pacman -S polkit polkit-gnome
+echo "exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" >> $HOME/.config/sway/config
 ```
 
 ### Rofi
@@ -391,10 +399,11 @@ sudo systemctl start acpid
 
 ### Screen capture
 
-Grim is a screenshot utility for Wayland. Slurp is used for selecting aerea and for multiple displays.
+Grim is a screenshot utility for Wayland. Slurp is used for selecting aerea and for multiple displays. Install imagemagick to have the convert command for the blur effect on screenlock
 
 ```bash
-sudo pacman -S grimshot grim slurp
+yay -S grimshot
+sudo pacman -S grim slurp imagemagick
 ```
 
 ### Screen sharing
@@ -408,14 +417,14 @@ yay -S xdg-desktop-portal xdg-desktop-portal-wlr
 **Dont't forget to put this line in your sway config file otherwise all the graphic part of the system will be very slow:**
 
 ```bash
-echo "exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway" >> ~/.config/sway/config
+echo "exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway" >> $HOME/.config/sway/config
 ```
 
 Configuration:
 
 ```bash
 mkdir ~/.config/xdg-desktop-portal-wlr
-echo "chooser_type = simple\nchooser_cmd = slurp -f %o -ro" > ~/.config/xdg-desktop-portal-wlr/config
+echo "chooser_type = simple\nchooser_cmd = slurp -f %o -ro" > $HOME/.config/xdg-desktop-portal-wlr/config
 ```
 
 ### Configuring displays

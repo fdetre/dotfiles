@@ -236,19 +236,24 @@ bindsym $mod+r mode "resize"
 #
 # Waybar scripts shortcuts:
 #
-    bindsym $mod+Shift+n exec $HOME/.config/waybar/scripts/ethernet.sh -s
-    bindsym $mod+Shift+v exec $HOME/.config/waybar/scripts/wireguard.sh -s
-    bindsym $mod+Shift+z exec $HOME/.config/waybar/scripts/powermenu.sh
+    bindsym $mod+Ctrl+n exec $HOME/.config/waybar/scripts/ethernet.sh -s
+    bindsym $mod+Ctrl+v exec $HOME/.config/waybar/scripts/wireguard.sh -s
+    bindsym $mod+Ctrl+z exec $HOME/.config/waybar/scripts/powermenu.sh
+    bindsym $mod+Ctrl+q exec $HOME/.config/waybar/scripts/pipewire.sh -w
+    bindsym $mod+Ctrl+Up exec $HOME/.config/waybar/scripts/pipewire.sh -e
+    bindsym $mod+Ctrl+Down exec $HOME/.config/waybar/scripts/pipewire.sh -r
+    bindsym $mod+Ctrl+w exec $HOME/.config/waybar/scripts/pipewire.sh -t
+    bindsym $mod+Ctrl+e exec $HOME/.config/waybar/scripts/pipewire.sh -y
 
 #
-# Mako(notifications):
+# Mako (notifications):
 #
     exec_always --no-startup-id mako &
 
 #
 # Screenshot:
 #
-    bindsym $mod+Shift+p exec grimshot save window 
+    bindsym $mod+Ctrl+p exec grimshot save window 
 
 #
 # Lockscreen:

@@ -70,6 +70,7 @@ get_wallpaper_index_to_set() {
 		#     current_time[Fri Jul 22 23:23:15 PM CEST 2022]
 		if [ $current_time -lt $next_sun_time ]; then
 			eval $index=$(($x-1))
+			echo $index
 			found=1
 			break
 		fi
@@ -102,7 +103,7 @@ get_seconds_before_switching_wallpaper() {
 }
 
 
-local first_set=1
+first_set=1
 declare -A sun_infos
 get_sun_state_hours sun_infos
 get_wallpaper_index_to_set current_wallpaper_index
