@@ -4,7 +4,7 @@ wallpaper[1]="$HOME/.config/wallpapers/zelda_ww_dawn.jpg"
 wallpaper[2]="$HOME/.config/wallpapers/zelda_ww_sunrise.jpg"
 wallpaper[3]="$HOME/.config/wallpapers/zelda_ww_sunset.jpg"
 wallpaper[4]="$HOME/.config/wallpapers/zelda_ww_dusk.jpg"
-tux_wallpaper="$HOME/.config/wallpapers/tux,png"
+tux_wallpaper="$HOME/.config/wallpapers/tux.png"
 
 ## Set the wallpaper
 ## To change wallpaper with swaybg on the fly we have to kill the PID
