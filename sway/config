@@ -145,8 +145,6 @@ input type:keyboard {
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
-    workspace 1 output eDP-1
-
     # Automatically move some applications to dedicated workspaces
     for_window [class="(?i)firefox"] move container to workspace 2
     for_window [class="(?i)google.*"] move container to workspace 2
@@ -225,7 +223,7 @@ bindsym $mod+r mode "resize"
 # Environment:
 #
     exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-    exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#    exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 #
 # Waybar:
@@ -263,4 +261,9 @@ bindsym $mod+r mode "resize"
 #
 # Dynamic wallpaper:
 #
-    exec_always --no-startup-id $HOME/.config/wallpapers/dynamic_background.sh &
+#    exec_always --no-startup-id $HOME/.config/wallpapers/dynamic_background.sh &
+
+#
+# Wallpaper:
+#
+    exec_always --no-startup-id swaybg -i $HOME/.config/wallpapers/star_wars.jpg -m fill &

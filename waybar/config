@@ -1,12 +1,12 @@
 [{
     "layer": "top",
     "position": "top",
-    "height": 24,
+    "height": 28,
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/pipewire", "custom/separator", "sway/language", "custom/separator", "custom/battery", "custom/separator", "custom/power"],
+    "modules-right": ["custom/pipewire", "custom/separator", "sway/language", "custom/separator", "custom/power"],
     //Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -77,8 +77,8 @@
     "position": "bottom",
     "margin-left": 10,
     "margin-right": 10,
-    "height": 24,
-    "modules-right": ["custom/wifi", "custom/separator", "custom/ethernet", "custom/separator", "custom/memory", "custom/separator", "custom/cpu", "custom/separator", "custom/filesystem"],
+    "height": 28,
+    "modules-right": ["custom/ethernet", "custom/separator", "custom/memory", "custom/separator", "custom/cpu", "custom/separator", "custom/filesystem"],
     "modules-left": ["custom/wireguard"],
 
     "custom/separator": {
