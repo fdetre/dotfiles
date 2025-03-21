@@ -348,7 +348,7 @@ makepkg -si
 Use NerdFonts for a large set of icons and fonts needed for foot terminal, sway and waybar.
 
 ```bash
-# Shallow clone : Make sure to use --depth 1 otherwise you will clonde hundrers of unnecessary GigaBytes
+# Shallow clone : Make sure to use --depth 1 otherwise you will clone hundreds of unnecessary GigaBytes
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts
 ./install.sh
