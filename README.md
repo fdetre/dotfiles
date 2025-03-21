@@ -106,7 +106,7 @@ pacstrap /mnt base base-devel linux linux-firmware
 Install the packages needed for lvm, encrypt, boot and system configuration:
 
 ```bash
-pacstrap /mnt lvm2 grub os-prober efibootmgr neovim bash-completion
+pacstrap /mnt lvm2 grub os-prober efibootmgr neovim bash-completion iwd
 ```
 
 ## Configure the system
@@ -333,6 +333,11 @@ xdg-user-dirs-update
 Yay is an AUR helper that lets you download and install packages from the Arch User Repository.
 
 ```bash
+# Install necessary dependency and patch resolvconf (otherwise it will fail fetching some sources)
+pacman -S go
+systemctl start systemd-resolved
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# Install yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
@@ -343,7 +348,8 @@ makepkg -si
 Use NerdFonts for a large set of icons and fonts needed for foot terminal, sway and waybar.
 
 ```bash
-git clone https://github.com/ryanoasis/nerd-fonts.git
+# Shallow clone : Make sure to use --depth 1 otherwise you will clonde hundrers of unnecessary GigaBytes
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts
 ./install.sh
 ```
